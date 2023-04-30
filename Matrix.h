@@ -12,19 +12,40 @@ class Matrix {
 public:
     explicit Matrix();
     explicit Matrix(int r, int c);
-    explicit Matrix(const std::initializer_list<std::initializer_list<float>> & data, int r, int c);
-    Matrix(Matrix & m);
+    Matrix(const std::initializer_list<std::initializer_list<float>>& data);
 
+    Matrix(const Matrix& m);
     ~Matrix();
 
     void print() const;
     void setAll(float n);
+    void setIdentity();
     void randomise();
+    float determinate();
+
+    Matrix operator+=(const Matrix & m);
+    Matrix operator+=(float n);
+    Matrix operator-=(const Matrix & m);
+    Matrix operator-=(float n);
+    Matrix operator*=(const Matrix & m);
+    Matrix operator*=(float n) const;
+
+    Matrix operator+(const Matrix & m) const;
+    Matrix operator+(float n) const;
+    Matrix operator-(const Matrix & m) const;
+    Matrix operator-(float n) const;
+    Matrix operator*(const Matrix & m) const;
+    Matrix operator*(float n) const;
+
+    Matrix& operator=(const Matrix & m);
+    float* operator[](int i) const;
+    Matrix operator-() const;
 
     [[nodiscard]] int getRows() const;
     [[nodiscard]] int getCols() const;
-    [[nodiscard]] float at(int r, int c) const;
 
+    static void print(const Matrix& m);
+    static Matrix identityMatrix(int size);
 
 
 
