@@ -1,7 +1,15 @@
-#include "Matrix.h"
+#include <cstdlib>
+#include <ctime>
+#include "src/Matrix/Matrix.h"
+#include "src/NeuralNet/NeuralNet.h"
+#include <iostream>
 
+using namespace std;
 
 int main() {
+    std::srand(std::time(nullptr));
+
+
     Matrix m = {{1, 2, 3},
                 {4, 5, 6}};
 
@@ -23,10 +31,14 @@ int main() {
     q.print();
     Matrix::print(p);
 
-    q = r * (Matrix::identityMatrix(3) * 3);
+    q = r * (Matrix::iMatrix(3) * 3);
     q -= r;
 
     Matrix::print(q);
+
+    for (int i = 0; i < 11; ++i) {
+        cout << i-5 << ":" << NeuralNet::sigmoid(i - 5) << " ";
+    }
 
 
     return 0;

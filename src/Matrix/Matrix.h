@@ -18,17 +18,16 @@ public:
     ~Matrix();
 
     void print() const;
-    void setAll(float n);
     void setIdentity();
     void randomise();
-    float determinate();
 
+    // TODO add reversibility for scalar operations
     Matrix operator+=(const Matrix & m);
     Matrix operator+=(float n);
     Matrix operator-=(const Matrix & m);
     Matrix operator-=(float n);
     Matrix operator*=(const Matrix & m);
-    Matrix operator*=(float n) const;
+    Matrix operator*=(float n);
 
     Matrix operator+(const Matrix & m) const;
     Matrix operator+(float n) const;
@@ -43,9 +42,12 @@ public:
 
     [[nodiscard]] int getRows() const;
     [[nodiscard]] int getCols() const;
+    [[nodiscard]] float getDeterminate() const;
+
+    void setAll(float n);
 
     static void print(const Matrix& m);
-    static Matrix identityMatrix(int size);
+    static Matrix iMatrix(int size);
 
 
 

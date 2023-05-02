@@ -166,7 +166,7 @@ void Matrix::setIdentity() {
 }
 
 //TODO
-[[maybe_unused]] float Matrix::determinate() {
+float Matrix::getDeterminate() const{
     return 0;
 }
 
@@ -194,7 +194,7 @@ Matrix Matrix::operator*=(const Matrix &m) {
     return n;
 }
 
-Matrix Matrix::operator*=(float n) const {
+Matrix Matrix::operator*=(float n) {
     if(data == nullptr) {
         throw std::runtime_error("Matrix not initialized");
     }
@@ -294,9 +294,8 @@ void Matrix::print(const Matrix &m) {
     m.print();
 }
 
-Matrix Matrix::identityMatrix(int size) {
+Matrix Matrix::iMatrix(int size) {
     Matrix n(size, size);
     n.setIdentity();
     return n;
 }
-
